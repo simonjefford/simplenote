@@ -5,21 +5,26 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "simplenote"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Simple wrapper for the SimpleNote HTTP API}
+    gem.description = %Q{Uses HTTParty to present a nice Ruby wrapper for SimpleNote}
     gem.email = "simon.jefford@gmail.com"
     gem.homepage = "http://github.com/simonjefford/simplenote"
     gem.authors = ["Simon Jefford"]
     gem.add_development_dependency "thoughtbot-shoulda"
+    gem.add_development_dependency "crack"
+    gem.add_development_dependency "jnunemaker-matchy"
+    gem.add_development_dependency "jferris-mocha", "=0.9.5.0.1241126838"
+    gem.add_runtime_dependency "httparty"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
+  test.libs << 'test'
   test.pattern = 'test/**/*_test.rb'
   test.verbose = true
 end
