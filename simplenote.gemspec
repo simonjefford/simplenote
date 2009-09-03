@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/simplenote.rb",
+     "simplenote.gemspec",
      "test/simplenote_test.rb",
      "test/test_helper.rb"
   ]
