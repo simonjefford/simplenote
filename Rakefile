@@ -14,6 +14,7 @@ begin
     gem.add_development_dependency "crack"
     gem.add_development_dependency "jnunemaker-matchy"
     gem.add_development_dependency "jferris-mocha", "=0.9.5.0.1241126838"
+    gem.add_development_dependency "fakeweb"    
     gem.add_runtime_dependency "httparty"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
