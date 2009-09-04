@@ -14,10 +14,24 @@ class SimpleNote
   end
 
   def get_index
-    self.class.get "/index", :query => { :auth => token, :email => email }, :format => :json
+    self.class.get "/index", :query => request_hash, :format => :json
   end
 
   def get_note(key)
-    self.class.get "/note", :query => { :key => key, :auth => token, :email => email }
+    self.class.get "/note", :query => request_hash.merge(:key => key)
+  end
+
+  def delete_note(key)
+    self.class.get "/delete", :query => request_hash.merge(:key => key)
+  end
+
+  def search(search_string, max_results=10)
+    self.class.get "/search", :query => request_hash.merge(:query => search_string, :results => max_results)
+  end
+
+  private
+
+  def request_hash
+    { :auth => token, :email => email }
   end
 end
