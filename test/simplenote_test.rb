@@ -25,6 +25,26 @@ class SimpleNoteTest < Test::Unit::TestCase
       end
     end
   end
+  
+  context SimpleNote do
+    should "log in, list notes and fetch a note" do
+      VCR.use_cassette('get_index', :record => :none) do
+        simplenote = SimpleNote.new
+        simplenote.login("simplenotetest@mailinator.com", "password!")
+
+        notes = simplenote.get_index
+        assert_equal 1, notes.length
+        assert !notes.first["deleted"]
+        assert_equal "2010-07-03 22:41:13.721231", notes.first["modify"]
+        assert_equal "agtzaW1wbGUtbm90ZXINCxIETm90ZRiD1LoCDA", notes.first["key"]
+        
+        note = simplenote.get_note(notes.first["key"])
+        assert_equal "hello world this is a new note", note.parsed_response
+      end
+    end
+  end
+
+  should_eventually "raise when login fails"
 
   context "get_index" do
     setup do

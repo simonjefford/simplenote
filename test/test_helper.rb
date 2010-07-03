@@ -5,8 +5,10 @@ require 'shoulda'
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'simplenote'
-%w(httparty matchy fakeweb mocha base64 crack).each { |x| require x }
+%w(httparty matchy fakeweb mocha base64 crack vcr).each { |x| require x }
 FakeWeb.allow_net_connect = false
 
-class Test::Unit::TestCase
+VCR.config do |c|
+  c.cassette_library_dir = 'test/fixtures'
+  c.http_stubbing_library = :fakeweb
 end
