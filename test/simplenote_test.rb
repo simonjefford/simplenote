@@ -42,9 +42,11 @@ class SimpleNoteTest < Test::Unit::TestCase
         assert_equal "hello world this is a new note", note.parsed_response
       end
     end
+    
+    should_eventually "create, list, fetch and delete a note"
+    should_eventually "search"
+    should_eventually "raise when login fails"
   end
-
-  should_eventually "raise when login fails"
 
   context "get_index" do
     setup do
