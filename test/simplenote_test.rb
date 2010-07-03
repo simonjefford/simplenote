@@ -82,28 +82,4 @@ class SimpleNoteTest < Test::Unit::TestCase
       end
     end
   end
-
-  context "get_index" do
-    setup do
-      # TODO - test helper to construct urls given a SimpleNote object
-      @url = "https://simple-note.appspot.com/api/index?email=me%40example.com&auth=token"
-      body = '[{"key":"notekey", "modify":"2009-09-02 12:00:00.000000", "key":"AB1234"}]'
-      FakeWeb.register_uri(:get, @url, :body => body)
-      @simplenote = SimpleNote.new
-      @simplenote.stubs(:token).returns("token")
-      @simplenote.stubs(:email).returns("me@example.com")
-      @index = @simplenote.get_index
-    end
-    
-    should "return an Array" do
-      @index.should be_kind_of(Array)
-    end
-
-    context "returned array" do
-      should "contain a single Hash" do
-        @index.length.should == 1
-        @index[0].should be_kind_of(Hash)
-      end
-    end
-  end
 end
