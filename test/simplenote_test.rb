@@ -17,7 +17,7 @@ class SimpleNoteTest < Test::Unit::TestCase
         assert_equal "agtzaW1wbGUtbm90ZXINCxIETm90ZRiD1LoCDA", notes.first["key"]
         
         note = @simplenote.get_note(notes.first["key"])
-        assert_equal "hello world this is a new note", note.parsed_response
+        assert_equal "hello world this is a new note", note
       end
     end
     
@@ -47,14 +47,13 @@ class SimpleNoteTest < Test::Unit::TestCase
       VCR.use_cassette('create_note', :record => :none) do
         login
         
-        response = @simplenote.create_note("A test note")
-        key = response.parsed_response
-        
+        key = @simplenote.create_note("A test note")
+
         notes = @simplenote.get_index
         assert_contains notes.collect { |note| note["key"] }, key
         
         note = @simplenote.get_note(key)
-        assert_equal "A test note", note.parsed_response
+        assert_equal "A test note", note
         
         @simplenote.delete_note(key)
       end
@@ -64,13 +63,11 @@ class SimpleNoteTest < Test::Unit::TestCase
       VCR.use_cassette('update_note', :record => :none) do
         login
 
-        response = @simplenote.create_note("A test note")
-        key = response.parsed_response
-
+        key = @simplenote.create_note("A test note")
         @simplenote.update_note(key, "The new content")
 
         note = @simplenote.get_note(key)
-        assert_equal "The new content", note.parsed_response
+        assert_equal "The new content", note
 
         @simplenote.delete_note(key)
       end
