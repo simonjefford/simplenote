@@ -43,7 +43,7 @@ class SimpleNoteTest < Test::Unit::TestCase
       end
     end
     
-    should "create a note" do
+    should "create, list, fetch and delete a note" do
       VCR.use_cassette('create_note', :record => :none) do
         simplenote = SimpleNote.new
         simplenote.login("simplenotetest@mailinator.com", "password!")
@@ -51,14 +51,18 @@ class SimpleNoteTest < Test::Unit::TestCase
         response = simplenote.create_note("A test note")
         key = response.parsed_response
         
+        notes = simplenote.get_index
+        assert_contains notes.collect { |note| note["key"] }, key
+        
         note = simplenote.get_note(key)
         assert_equal "A test note", note.parsed_response
+        
+        simplenote.delete_note(key)
       end
     end
     
     should_eventually "return nil when a note doesn't exist"
-
-    should_eventually "create, list, fetch and delete a note"
+    should_eventually "raise if you try to delete a note that doesn't exist"
   end
 
   context "get_index" do
