@@ -36,8 +36,6 @@ class SimpleNoteTest < Test::Unit::TestCase
     
     should "raise when login fails" do
       VCR.use_cassette('login_failure', :record => :none) do
-        @simplenote = SimpleNote.new
-        
         error = assert_raises RuntimeError do
           @simplenote.login("simplenotetest@mailinator.com", "not my password!")
         end
