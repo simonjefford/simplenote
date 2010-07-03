@@ -5,6 +5,7 @@ require 'crack'
 class SimpleNote
   include HTTParty
   attr_reader :token, :email
+  format :json
   base_uri 'https://simple-note.appspot.com/api'
 
   def login(email, password)

@@ -43,8 +43,21 @@ class SimpleNoteTest < Test::Unit::TestCase
       end
     end
     
+    should "search notes" do
+      VCR.use_cassette('search', :record => :none) do
+        simplenote = SimpleNote.new
+        simplenote.login("simplenotetest@mailinator.com", "password!")
+        
+        response = simplenote.search("hello")
+        assert_equal 1, response["Response"]["Results"].length
+        assert_equal "agtzaW1wbGUtbm90ZXINCxIETm90ZRiD1LoCDA", response["Response"]["Results"].first["key"]
+        
+        response = simplenote.search("goodbye")
+        assert_equal 0, response["Response"]["Results"].length
+      end
+    end
+    
     should_eventually "create, list, fetch and delete a note"
-    should_eventually "search"
     should_eventually "raise when login fails"
   end
 

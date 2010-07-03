@@ -1,0 +1,100 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://simple-note.appspot.com:443/api/login
+    body: |
+      cGFzc3dvcmQ9cGFzc3dvcmQhJmVtYWlsPXNpbXBsZW5vdGV0ZXN0JTQwbWFp
+      bGluYXRvci5jb20=
+
+    headers: 
+      connection: 
+      - close
+      content-type: 
+      - application/x-www-form-urlencoded
+      content-length: 
+      - "78"
+      host: 
+      - simple-note.appspot.com
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      content-type: 
+      - text/html; charset=utf-8
+      connection: 
+      - close
+      date: 
+      - Sat, 03 Jul 2010 22:59:23 GMT
+      server: 
+      - Google Frontend
+      account-type: 
+      - "000"
+      set-cookie: 
+      - auth=2D3D3762E9204476AF991F3347C50CA9379980415D32962552C40FBE3EE4CBB6; expires=Sat, 17-Jul-2010 22:59:23 GMT
+      - email=simplenotetest@mailinator.com; expires=Sat, 17-Jul-2010 22:59:23 GMT
+      cache-control: 
+      - no-cache
+    body: 2D3D3762E9204476AF991F3347C50CA9379980415D32962552C40FBE3EE4CBB6
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: https://simple-note.appspot.com:443/api/search?query=hello&results=10&auth=2D3D3762E9204476AF991F3347C50CA9379980415D32962552C40FBE3EE4CBB6&email=simplenotetest%40mailinator.com
+    body: 
+    headers: 
+      connection: 
+      - close
+      host: 
+      - simple-note.appspot.com
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      content-type: 
+      - text/html; charset=utf-8
+      connection: 
+      - close
+      date: 
+      - Sat, 03 Jul 2010 22:59:24 GMT
+      server: 
+      - Google Frontend
+      cache-control: 
+      - no-cache
+    body: "{\"Response\":{\"totalRecords\":1,\"Results\":[{\"content\":\"hello world this is a new note\",\"key\":\"agtzaW1wbGUtbm90ZXINCxIETm90ZRiD1LoCDA\"}]}}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: https://simple-note.appspot.com:443/api/search?query=goodbye&results=10&auth=2D3D3762E9204476AF991F3347C50CA9379980415D32962552C40FBE3EE4CBB6&email=simplenotetest%40mailinator.com
+    body: 
+    headers: 
+      connection: 
+      - close
+      host: 
+      - simple-note.appspot.com
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      content-type: 
+      - text/html; charset=utf-8
+      connection: 
+      - close
+      date: 
+      - Sat, 03 Jul 2010 22:59:24 GMT
+      server: 
+      - Google Frontend
+      cache-control: 
+      - no-cache
+    body: "{\"Response\":{\"totalRecords\":0,\"Results\":[]}}"
+    http_version: "1.1"
