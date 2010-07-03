@@ -25,7 +25,9 @@ class SimpleNote
   end
 
   def delete_note(key)
-    self.class.get "/delete", :query => request_hash.merge(:key => key)
+    out = self.class.get "/delete", :query => request_hash.merge(:key => key)
+    raise "Couldn't delete note" unless out.response.is_a?(Net::HTTPOK)
+    out
   end
   
   def create_note(content)

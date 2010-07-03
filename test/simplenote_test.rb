@@ -70,7 +70,17 @@ class SimpleNoteTest < Test::Unit::TestCase
       end
     end
     
-    should_eventually "raise if you try to delete a note that doesn't exist"
+    should "raise if you try to delete a note that doesn't exist" do
+      VCR.use_cassette('delete_note_with_bad_key', :record => :none) do
+        simplenote = SimpleNote.new
+        simplenote.login("simplenotetest@mailinator.com", "password!")
+        
+        error = assert_raises RuntimeError do
+          simplenote.delete_note("key that doesn't exist")
+        end
+        assert_equal "Couldn't delete note", error.message
+      end
+    end
   end
 
   context "get_index" do
