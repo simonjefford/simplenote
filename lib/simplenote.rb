@@ -20,7 +20,8 @@ class SimpleNote
   end
 
   def get_note(key)
-    self.class.get "/note", :query => request_hash.merge(:key => key)
+    out = self.class.get "/note", :query => request_hash.merge(:key => key)
+    out.response.is_a?(Net::HTTPNotFound) ? nil : out
   end
 
   def delete_note(key)

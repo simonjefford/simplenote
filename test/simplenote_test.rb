@@ -61,7 +61,15 @@ class SimpleNoteTest < Test::Unit::TestCase
       end
     end
     
-    should_eventually "return nil when a note doesn't exist"
+    should "return nil when you fetch a note that doesn't exist" do
+      VCR.use_cassette('get_note_with_bad_key', :record => :none) do
+        simplenote = SimpleNote.new
+        simplenote.login("simplenotetest@mailinator.com", "password!")
+        
+        assert_nil simplenote.get_note("key that doesn't exist")
+      end
+    end
+    
     should_eventually "raise if you try to delete a note that doesn't exist"
   end
 
