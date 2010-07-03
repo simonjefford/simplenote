@@ -8,7 +8,7 @@ class SimpleNoteTest < Test::Unit::TestCase
 
     should "log in, list notes and fetch a note" do
       VCR.use_cassette('get_index', :record => :none) do
-        login()
+        login
 
         notes = @simplenote.get_index
         assert_equal 1, notes.length

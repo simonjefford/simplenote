@@ -11,9 +11,6 @@ begin
     gem.homepage = "http://github.com/simonjefford/simplenote"
     gem.authors = ["Simon Jefford"]
     gem.add_development_dependency "thoughtbot-shoulda"
-    gem.add_development_dependency "crack"
-    gem.add_development_dependency "jnunemaker-matchy"
-    gem.add_development_dependency "jferris-mocha", "=0.9.5.0.1241126838"
     gem.add_development_dependency "fakeweb"
     gem.add_development_dependency "vcr"
     gem.add_runtime_dependency "httparty"
