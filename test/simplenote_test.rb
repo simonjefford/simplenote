@@ -1,31 +1,6 @@
 require 'test_helper'
 
 class SimpleNoteTest < Test::Unit::TestCase
-  context "login" do
-    setup do
-      SimpleNote.stubs(:post).returns("token")
-      @simplenote = SimpleNote.new
-      @email = "validaccount@example.com"
-      @password = "correctpassword"
-      @simplenote.login(@email, @password)
-    end
-
-    should "store the returned token" do
-      @simplenote.token.should == "token"
-    end
-
-    should "store the email" do
-      @simplenote.email.should == @email
-    end
-
-    should "post to /login with email and password base 64 encoded" do
-      expected_body = Base64.encode64({ :email => @email, :password => @password}.to_params)
-      assert_received(SimpleNote, :post) do |expect|
-        expect.with "/login", :body => expected_body
-      end
-    end
-  end
-  
   context SimpleNote do
     should "log in, list notes and fetch a note" do
       VCR.use_cassette('get_index', :record => :none) do
@@ -57,8 +32,18 @@ class SimpleNoteTest < Test::Unit::TestCase
       end
     end
     
+    should "raise when login fails" do
+      VCR.use_cassette('login_failure', :record => :none) do
+        simplenote = SimpleNote.new
+        
+        error = assert_raises RuntimeError do
+          simplenote.login("simplenotetest@mailinator.com", "not my password!")
+        end
+        assert_equal "Login failed", error.message
+      end
+    end
+    
     should_eventually "create, list, fetch and delete a note"
-    should_eventually "raise when login fails"
   end
 
   context "get_index" do

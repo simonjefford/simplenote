@@ -12,6 +12,7 @@ class SimpleNote
     encoded_body = Base64.encode64({:email => email, :password => password}.to_params)
     @email = email
     @token = self.class.post "/login", :body => encoded_body
+    raise "Login failed" unless @token.response.is_a?(Net::HTTPOK)
   end
 
   def get_index
