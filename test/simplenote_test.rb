@@ -43,6 +43,21 @@ class SimpleNoteTest < Test::Unit::TestCase
       end
     end
     
+    should "create a note" do
+      VCR.use_cassette('create_note', :record => :none) do
+        simplenote = SimpleNote.new
+        simplenote.login("simplenotetest@mailinator.com", "password!")
+        
+        response = simplenote.create_note("A test note")
+        key = response.parsed_response
+        
+        note = simplenote.get_note(key)
+        assert_equal "A test note", note.parsed_response
+      end
+    end
+    
+    should_eventually "return nil when a note doesn't exist"
+
     should_eventually "create, list, fetch and delete a note"
   end
 

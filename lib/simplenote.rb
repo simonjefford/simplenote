@@ -26,6 +26,10 @@ class SimpleNote
   def delete_note(key)
     self.class.get "/delete", :query => request_hash.merge(:key => key)
   end
+  
+  def create_note(content)
+    self.class.post "/note", :query => request_hash, :body => Base64.encode64(content)
+  end
 
   def search(search_string, max_results=10)
     self.class.get "/search", :query => request_hash.merge(:query => search_string, :results => max_results)
