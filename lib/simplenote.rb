@@ -29,6 +29,10 @@ class SimpleNote
     raise "Couldn't delete note" unless out.response.is_a?(Net::HTTPOK)
     out
   end
+
+  def update_note(key, content)
+    self.class.post "/note", :query => request_hash.merge(:key => key), :body => Base64.encode64(content)
+  end
   
   def create_note(content)
     self.class.post "/note", :query => request_hash, :body => Base64.encode64(content)

@@ -59,6 +59,22 @@ class SimpleNoteTest < Test::Unit::TestCase
         @simplenote.delete_note(key)
       end
     end
+
+    should "update a note" do
+      VCR.use_cassette('update_note', :record => :none) do
+        login
+
+        response = @simplenote.create_note("A test note")
+        key = response.parsed_response
+
+        @simplenote.update_note(key, "The new content")
+
+        note = @simplenote.get_note(key)
+        assert_equal "The new content", note.parsed_response
+
+        @simplenote.delete_note(key)
+      end
+    end
     
     should "return nil when you fetch a note that doesn't exist" do
       VCR.use_cassette('get_note_with_bad_key', :record => :none) do
