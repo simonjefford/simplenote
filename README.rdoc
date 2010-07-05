@@ -12,6 +12,10 @@ A dead simple gem for accessing SimpleNote notes via its API
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
+== Contributors
+
+Aaron Peckham - create_note and awesome test coverage
+
 == Copyright
 
 Copyright (c) 2009 Simon Jefford. See LICENSE for details.
