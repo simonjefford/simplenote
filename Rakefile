@@ -10,10 +10,10 @@ begin
     gem.email = "simon.jefford@gmail.com"
     gem.homepage = "http://github.com/simonjefford/simplenote"
     gem.authors = ["Simon Jefford"]
-    gem.add_development_dependency "thoughtbot-shoulda"
+    gem.add_development_dependency "shoulda"
     gem.add_development_dependency "fakeweb"
     gem.add_development_dependency "vcr"
-    gem.add_runtime_dependency "httparty"
+    gem.add_runtime_dependency "httparty", "=0.6.0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
