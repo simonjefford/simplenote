@@ -20,7 +20,7 @@ class SimpleNoteTest < Test::Unit::TestCase
         assert_equal "hello world this is a new note", note
       end
     end
-    
+
     should "search notes" do
       VCR.use_cassette('search', :record => :none) do
         login
@@ -33,7 +33,7 @@ class SimpleNoteTest < Test::Unit::TestCase
         assert_equal 0, response["Response"]["Results"].length
       end
     end
-    
+
     should "raise when login fails" do
       VCR.use_cassette('login_failure', :record => :none) do
         error = assert_raises RuntimeError do
@@ -42,19 +42,19 @@ class SimpleNoteTest < Test::Unit::TestCase
         assert_equal "Login failed", error.message
       end
     end
-    
+
     should "create, list, fetch and delete a note" do
       VCR.use_cassette('create_note', :record => :none) do
         login
-        
+
         key = @simplenote.create_note("A test note")
 
         notes = @simplenote.get_index
         assert_contains notes.collect { |note| note["key"] }, key
-        
+
         note = @simplenote.get_note(key)
         assert_equal "A test note", note
-        
+
         @simplenote.delete_note(key)
       end
     end
@@ -72,19 +72,19 @@ class SimpleNoteTest < Test::Unit::TestCase
         @simplenote.delete_note(key)
       end
     end
-    
+
     should "return nil when you fetch a note that doesn't exist" do
       VCR.use_cassette('get_note_with_bad_key', :record => :none) do
         login
-        
+
         assert_nil @simplenote.get_note("key that doesn't exist")
       end
     end
-    
+
     should "raise if you try to delete a note that doesn't exist" do
       VCR.use_cassette('delete_note_with_bad_key', :record => :none) do
         login
-        
+
         error = assert_raises RuntimeError do
           @simplenote.delete_note("key that doesn't exist")
         end
