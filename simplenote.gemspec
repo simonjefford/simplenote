@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{simplenote}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Simon Jefford"]
-  s.date = %q{2010-07-05}
+  s.date = %q{2010-07-24}
   s.description = %q{Uses HTTParty to present a nice Ruby wrapper for SimpleNote}
   s.email = %q{simon.jefford@gmail.com}
   s.extra_rdoc_files = [
