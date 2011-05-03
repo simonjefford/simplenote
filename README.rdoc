@@ -1,5 +1,7 @@
 = simplenote
 
+http://travis-ci.org/simonjefford/simplenote.png
+
 A dead simple gem for accessing SimpleNote notes via its API
 
 == Note on Patches/Pull Requests
