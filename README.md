@@ -1,11 +1,13 @@
-= simplenote
+# simplenote
 
-http://travis-ci.org/simonjefford/simplenote.png
+[![Build Status][2]][1]
+  [1]: http://travis-ci.org/simonjefford/simplenote
+  [2]: http://travis-ci.org/simonjefford/simplenote.png
 
 A dead simple gem for accessing SimpleNote notes via its API
 
-== Note on Patches/Pull Requests
- 
+## Note on Patches/Pull Requests
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
@@ -14,10 +16,10 @@ A dead simple gem for accessing SimpleNote notes via its API
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-== Contributors
+## Contributors
 
 Aaron Peckham - create_note and awesome test coverage
 
-== Copyright
+## Copyright
 
 Copyright (c) 2009 Simon Jefford. See LICENSE for details.
