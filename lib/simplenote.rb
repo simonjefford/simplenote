@@ -2,6 +2,8 @@ require 'httparty'
 require 'base64'
 require 'crack'
 
+require File.join(File.expand_path('..', __FILE__), 'simplenote_api2')
+
 class SimpleNote
   include HTTParty
   attr_reader :token, :email

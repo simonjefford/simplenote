@@ -55,6 +55,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<fakeweb>, [">= 0"])
       s.add_development_dependency(%q<vcr>, [">= 0"])
       s.add_runtime_dependency(%q<httparty>, ["= 0.6.0"])
+      s.add_runtime_dependency(%q<json_pure>, ["= 1.5.1"])
     else
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<fakeweb>, [">= 0"])

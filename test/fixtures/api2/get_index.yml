@@ -1,0 +1,78 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://simple-note.appspot.com:443/api/login
+    body: |
+      ZW1haWw9c2ltcGxlbm90ZXRlc3QlNDBtYWlsaW5hdG9yLmNvbSZwYXNzd29y
+      ZD1wYXNzd29yZCE=
+
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      content-type: 
+      - text/html; charset=utf-8
+      server: 
+      - Google Frontend
+      date: 
+      - Wed, 08 Jun 2011 05:39:14 GMT
+      account-type: 
+      - "000"
+      set-cookie: 
+      - auth=268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79; expires=Wed, 22-Jun-2011 05:39:14 GMT
+      - email=simplenotetest@mailinator.com; expires=Wed, 22-Jun-2011 05:39:14 GMT
+      cache-control: 
+      - no-cache
+    body: 268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: https://simple-note.appspot.com:443/api2/index?email=simplenotetest%40mailinator.com&auth=268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      content-type: 
+      - text/html; charset=utf-8
+      server: 
+      - Google Frontend
+      date: 
+      - Wed, 08 Jun 2011 05:39:15 GMT
+      cache-control: 
+      - no-cache
+    body: "{\"count\":11,\"data\":[{\"modifydate\": \"1278200707.748862\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1278200707.748878\", \"systemtags\": [], \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRiJjbgCDA\", \"minversion\": 1}, {\"modifydate\": \"1278200675.938200\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1278200675.938210\", \"systemtags\": [], \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRiQv7cCDA\", \"minversion\": 1}, {\"modifydate\": \"1278199158.637359\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1278199158.637371\", \"systemtags\": [], \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRj9oLkCDA\", \"minversion\": 1}, {\"modifydate\": \"1278199036.238075\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1278199036.238082\", \"systemtags\": [], \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRje27oCDA\", \"minversion\": 1}, {\"modifydate\": \"1278199026.317652\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1278199026.317659\", \"systemtags\": [], \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRjhv7kCDA\", \"minversion\": 1}, {\"modifydate\": \"1278198943.961084\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1278198943.961093\", \"systemtags\": [], \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRighbgCDA\", \"minversion\": 1}, {\"modifydate\": \"1278198923.937139\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1278198923.937148\", \"systemtags\": [], \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRiOv7cCDA\", \"minversion\": 1}, {\"modifydate\": \"1278198886.996127\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1278198886.996135\", \"systemtags\": [], \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRiyibkCDA\", \"minversion\": 1}, {\"modifydate\": \"1278198852.942223\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1278198852.942231\", \"systemtags\": [], \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRjuo7gCDA\", \"minversion\": 1}, {\"modifydate\": \"1278198841.105683\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1278198841.105688\", \"systemtags\": [], \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRjto7gCDA\", \"minversion\": 1}, {\"modifydate\": \"1278196873.721231\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1278196867.833135\", \"systemtags\": [], \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRiD1LoCDA\", \"minversion\": 1}],\"time\":\"1307511555.178919\"}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: https://simple-note.appspot.com:443/api2/data/agtzaW1wbGUtbm90ZXINCxIETm90ZRiJjbgCDA?email=simplenotetest%40mailinator.com&auth=268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      content-type: 
+      - text/html; charset=utf-8
+      server: 
+      - Google Frontend
+      date: 
+      - Wed, 08 Jun 2011 05:39:18 GMT
+      cache-control: 
+      - no-cache
+    body: "{\"modifydate\": \"1278200707.748862\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1278200707.748878\", \"systemtags\": [], \"content\": \"A test note\", \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRiJjbgCDA\", \"minversion\": 1}"
+    http_version: "1.1"
