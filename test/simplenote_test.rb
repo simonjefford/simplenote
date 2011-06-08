@@ -16,7 +16,7 @@ class SimpleNoteTest < Test::Unit::TestCase
         assert_equal "2010-07-03 22:41:13.721231", notes.first["modify"]
         assert_equal "agtzaW1wbGUtbm90ZXINCxIETm90ZRiD1LoCDA", notes.first["key"]
         
-        note = @simplenote.get_note(notes.first["key"])
+        note = @simplenote.get_note(notes.first["key"]).body
         assert_equal "hello world this is a new note", note
       end
     end
@@ -50,10 +50,10 @@ class SimpleNoteTest < Test::Unit::TestCase
         key = @simplenote.create_note("A test note")
 
         notes = @simplenote.get_index
-        assert_contains notes.collect { |note| note["key"] }, key
+        assert_contains notes.collect { |note| note["key"] }, key.body
 
         note = @simplenote.get_note(key)
-        assert_equal "A test note", note
+        assert_equal "A test note", note.body
 
         @simplenote.delete_note(key)
       end
@@ -67,7 +67,7 @@ class SimpleNoteTest < Test::Unit::TestCase
         @simplenote.update_note(key, "The new content")
 
         note = @simplenote.get_note(key)
-        assert_equal "The new content", note
+        assert_equal "The new content", note.body
 
         @simplenote.delete_note(key)
       end
