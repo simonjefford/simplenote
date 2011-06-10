@@ -1,0 +1,124 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://simple-note.appspot.com:443/api/login
+    body: |
+      ZW1haWw9c2ltcGxlbm90ZXRlc3QlNDBtYWlsaW5hdG9yLmNvbSZwYXNzd29y
+      ZD1wYXNzd29yZCE=
+
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=utf-8
+      cache-control: 
+      - no-cache
+      set-cookie: 
+      - auth=268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79; expires=Wed, 22-Jun-2011 23:41:35 GMT
+      - email=simplenotetest@mailinator.com; expires=Wed, 22-Jun-2011 23:41:35 GMT
+      account-type: 
+      - "000"
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      date: 
+      - Wed, 08 Jun 2011 23:41:35 GMT
+      server: 
+      - Google Frontend
+    body: 268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://simple-note.appspot.com:443/api2/data?auth=268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79&email=simplenotetest%40mailinator.com
+    body: "{\"content\":\"A test note\"}"
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=utf-8
+      cache-control: 
+      - no-cache
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      date: 
+      - Wed, 08 Jun 2011 23:41:36 GMT
+      server: 
+      - Google Frontend
+    body: "{\"modifydate\": \"1307576496.782525\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1307576496.782525\", \"systemtags\": [], \"version\": 1, \"syncnum\": 1, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRiXvusIDA\", \"minversion\": 1}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://simple-note.appspot.com:443/api2/data/agtzaW1wbGUtbm90ZXINCxIETm90ZRiXvusIDA?auth=268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79&email=simplenotetest%40mailinator.com
+    body: "{\"content\":\"The new content\"}"
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=utf-8
+      cache-control: 
+      - no-cache
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      date: 
+      - Wed, 08 Jun 2011 23:41:37 GMT
+      server: 
+      - Google Frontend
+    body: "{\"modifydate\": \"1307576497.734024\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1307576496.782525\", \"systemtags\": [], \"version\": 2, \"syncnum\": 2, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRiXvusIDA\", \"minversion\": 1}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: https://simple-note.appspot.com:443/api2/data/agtzaW1wbGUtbm90ZXINCxIETm90ZRiXvusIDA?auth=268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79&email=simplenotetest%40mailinator.com
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=utf-8
+      cache-control: 
+      - no-cache
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      date: 
+      - Wed, 08 Jun 2011 23:41:39 GMT
+      server: 
+      - Google Frontend
+    body: "{\"modifydate\": \"1307576497.734024\", \"tags\": [], \"deleted\": 0, \"createdate\": \"1307576496.782525\", \"systemtags\": [], \"content\": \"The new content\", \"version\": 2, \"syncnum\": 2, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRiXvusIDA\", \"minversion\": 1}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://simple-note.appspot.com:443/api2/data/agtzaW1wbGUtbm90ZXINCxIETm90ZRiXvusIDA?auth=268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79&email=simplenotetest%40mailinator.com&key=agtzaW1wbGUtbm90ZXINCxIETm90ZRiXvusIDA
+    body: "{\"deleted\":1}"
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=utf-8
+      cache-control: 
+      - no-cache
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      date: 
+      - Wed, 08 Jun 2011 23:41:42 GMT
+      server: 
+      - Google Frontend
+    body: "{\"modifydate\": \"1307576497.734024\", \"tags\": [], \"deleted\": 1, \"createdate\": \"1307576496.782525\", \"systemtags\": [], \"version\": 2, \"syncnum\": 3, \"key\": \"agtzaW1wbGUtbm90ZXINCxIETm90ZRiXvusIDA\", \"minversion\": 1}"
+    http_version: "1.1"

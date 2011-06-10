@@ -1,0 +1,57 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://simple-note.appspot.com:443/api/login
+    body: |
+      cGFzc3dvcmQ9cGFzc3dvcmQhJmVtYWlsPXNpbXBsZW5vdGV0ZXN0JTQwbWFp
+      bGluYXRvci5jb20=
+
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      content-type: 
+      - text/html; charset=utf-8
+      server: 
+      - Google Frontend
+      date: 
+      - Wed, 08 Jun 2011 08:30:51 GMT
+      account-type: 
+      - "000"
+      set-cookie: 
+      - auth=268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79; expires=Wed, 22-Jun-2011 08:30:51 GMT
+      - email=simplenotetest@mailinator.com; expires=Wed, 22-Jun-2011 08:30:51 GMT
+      cache-control: 
+      - no-cache
+    body: 268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: https://simple-note.appspot.com:443/api2/search?query=hello&auth=268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79&results=10&email=simplenotetest%40mailinator.com
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 404
+      message: Not Found
+    headers: 
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      content-type: 
+      - text/html; charset=utf-8
+      server: 
+      - Google Frontend
+      date: 
+      - Wed, 08 Jun 2011 08:30:51 GMT
+      content-length: 
+      - "0"
+      cache-control: 
+      - no-cache
+    body: 
+    http_version: "1.1"

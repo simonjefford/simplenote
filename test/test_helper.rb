@@ -9,6 +9,6 @@ require 'simplenote'
 FakeWeb.allow_net_connect = false
 
 VCR.config do |c|
-  c.cassette_library_dir = 'test/fixtures'
+  c.cassette_library_dir = File.join(File.expand_path('..', __FILE__), 'fixtures')
   c.http_stubbing_library = :fakeweb
 end

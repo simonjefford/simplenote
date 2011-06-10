@@ -1,0 +1,57 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://simple-note.appspot.com:443/api/login
+    body: |
+      ZW1haWw9c2ltcGxlbm90ZXRlc3QlNDBtYWlsaW5hdG9yLmNvbSZwYXNzd29y
+      ZD1wYXNzd29yZCE=
+
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=utf-8
+      cache-control: 
+      - no-cache
+      set-cookie: 
+      - auth=268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79; expires=Wed, 22-Jun-2011 23:43:15 GMT
+      - email=simplenotetest@mailinator.com; expires=Wed, 22-Jun-2011 23:43:15 GMT
+      account-type: 
+      - "000"
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      date: 
+      - Wed, 08 Jun 2011 23:43:15 GMT
+      server: 
+      - Google Frontend
+    body: 268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: https://simple-note.appspot.com:443/api2/data/key%20that%20doesn't%20exist?auth=268FEE3B62CC7400AF0F02DA1A7FF319ABAC3D57232D34FA4674BA002DA66B79&email=simplenotetest%40mailinator.com&key=key%20that%20doesn't%20exist
+    body: "{\"deleted\":1}"
+    headers: 
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 404
+      message: Not Found
+    headers: 
+      content-type: 
+      - text/html; charset=utf-8
+      cache-control: 
+      - no-cache
+      expires: 
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      date: 
+      - Wed, 08 Jun 2011 23:43:16 GMT
+      server: 
+      - Google Frontend
+      content-length: 
+      - "0"
+    body: 
+    http_version: "1.1"
