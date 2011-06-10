@@ -14,17 +14,17 @@ Gem::Specification.new do |s|
   s.email = %q{simon.jefford@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.rdoc"
   ]
   s.files = [
     ".autotest",
      ".document",
      ".gitignore",
      "LICENSE",
-     "README.rdoc",
+     "README.md",
      "Rakefile",
      "VERSION",
      "lib/simplenote.rb",
+     "lib/simplenote_api2.rb",
      "simplenote.gemspec",
      "test/fixtures/create_note.yml",
      "test/fixtures/delete_note_with_bad_key.yml",
@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
      "test/fixtures/search.yml",
      "test/fixtures/update_note.yml",
      "test/simplenote_test.rb",
+     "test/simplenote_api2_test.rb",
      "test/test_helper.rb"
   ]
   s.homepage = %q{http://github.com/simonjefford/simplenote}

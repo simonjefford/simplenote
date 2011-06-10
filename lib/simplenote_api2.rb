@@ -9,11 +9,20 @@ class SimpleNoteApi2
   attr_reader :token, :email
   base_uri 'https://simple-note.appspot.com/'
 
-  def login(email, password)
-    encoded_body = Base64.encode64({:email => email, :password => password}.to_params)
+  def initialize(email, password)
+    @email, @password = email, password
+  end
+
+  def token
+    @token ||= login
+  end
+
+  def login
+    encoded_body = Base64.encode64({:email => @email, :password => @password}.to_params)
     @email = email
     @token = self.class.post "/api/login", :body => encoded_body
     raise "Login failed" unless @token.response.is_a?(Net::HTTPOK)
+    @token
   end
 
   def get_index
