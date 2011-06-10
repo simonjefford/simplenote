@@ -3,13 +3,11 @@ require 'test_helper'
 class SimpleNoteApi2Test < Test::Unit::TestCase
   context SimpleNoteApi2 do
     setup do
-      @simplenote = SimpleNoteApi2.new
+      @simplenote = SimpleNoteApi2.new("simplenotetest@mailinator.com", "password!")
     end
 
     should "log in, list notes and fetch a note" do
       VCR.use_cassette('api2/get_index', :record => :none) do
-        login
-
         index = @simplenote.get_index
         assert_equal 11, index['count']
         note = index['data'].first
@@ -25,7 +23,8 @@ class SimpleNoteApi2Test < Test::Unit::TestCase
     should "raise when login fails" do
       VCR.use_cassette('api2/login_failure', :record => :none) do
         error = assert_raises RuntimeError do
-          @simplenote.login("simplenotetest@mailinator.com", "not my password!")
+          @simplenote = SimpleNoteApi2.new("simplenotetest@mailinator.com", "not my password!")
+          @simplenote.login
         end
         assert_equal "Login failed", error.message
       end
@@ -33,7 +32,6 @@ class SimpleNoteApi2Test < Test::Unit::TestCase
 
     should "create, list, fetch and delete a note" do
       VCR.use_cassette('api2/create_note', :record => :none) do
-        login
 
         created_note = @simplenote.create_note("A test note")
 
@@ -49,8 +47,6 @@ class SimpleNoteApi2Test < Test::Unit::TestCase
 
     should "update a note" do
       VCR.use_cassette('api2/update_note', :record => :none) do
-        login
-
         key = @simplenote.create_note("A test note")['key']
         @simplenote.update_note(key, "The new content")
 
@@ -63,16 +59,12 @@ class SimpleNoteApi2Test < Test::Unit::TestCase
 
     should "return nil when you fetch a note that doesn't exist" do
       VCR.use_cassette('api2/get_note_with_bad_key', :record => :none) do
-        login
-
         assert_nil @simplenote.get_note("key that doesn't exist")
       end
     end
 
     should "raise if you try to delete a note that doesn't exist" do
       VCR.use_cassette('api2/delete_note_with_bad_key', :record => :none) do
-        login
-
         error = assert_raises RuntimeError do
           @simplenote.delete_note("key that doesn't exist")
         end
@@ -81,7 +73,4 @@ class SimpleNoteApi2Test < Test::Unit::TestCase
     end
   end
 
-  def login
-    @simplenote.login("simplenotetest@mailinator.com", "password!")
-  end
 end
