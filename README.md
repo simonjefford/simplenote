@@ -4,7 +4,7 @@
   [1]: http://travis-ci.org/simonjefford/simplenote
   [2]: http://travis-ci.org/simonjefford/simplenote.png
 
-A dead simple gem for accessing SimpleNote notes via its API
+A simple gem for accessing SimpleNote notes via its API
 
 ## Note on Patches/Pull Requests
 
